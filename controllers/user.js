@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt'); // Encrypts the password sent to the database
 const jwt = require('jsonwebtoken');
 const passwordValidator = require('password-validator'); // A library to simplify the rules of password validation, by taking away all the repeated parts and by providing a readable and maintainable API to use
 const emailValidator = require("email-validator"); // Makes sure that the email address is valid
-const User = require('../models/User');
+const User = require('../models/user');
 
 
 // Create a schema for the passwords
