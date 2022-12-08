@@ -28,7 +28,7 @@ exports.register = (req, res, next) => {
             isAdmin: false
           });
           user.save()
-            .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
+            .then(() => res.status(201).json({ message: 'Bienvenue chez mes gourMandys !' }))
             .catch(error => res.status(400).json({ error }));
         })
         .catch(error => res.status(500).json({ error }));
@@ -52,6 +52,8 @@ exports.login = (req, res, next) => {
               return res.status(401).json({ error : `Le mot de passe renseigné est incorrect.` });
             }
             res.status(200).json({
+              firstName: user.firstName,
+              lastName: user.lastName,
               userId: user._id,
               isAdmin: user.isAdmin,
               token: jwt.sign(
@@ -96,12 +98,12 @@ exports.modifyUser = (req, res, next) => {
             avatar: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
         } : { ...req.body };
     User.updateOne({ _id: req.params.id }, { ...userObject, _id: req.params.id })
-        .then(() => res.status(200).json({ message: 'Utilisateur modifié !' }))
+        .then(() => res.status(200).json({ message: 'Vos modifications ont été prises en compte.' }))
         .catch(error => res.status(400).json({ error }));
 };
 
 exports.deleteUser = (req, res, next) => {
     User.deleteOne({ _id: req.params.id })
-        .then(() => res.status(200).json({ message: 'Utilisateur supprimé !' }))
+        .then(() => res.status(200).json({ message: 'Le compte a été supprimé de la base de donnée.' }))
         .catch(error => res.status(400).json({ error }));
 };

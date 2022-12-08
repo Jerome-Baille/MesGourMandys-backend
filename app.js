@@ -31,7 +31,12 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginEmbedderPolicy: false, // Disables the "Cross-Origin Resource Sharing" header
+    crossOriginResourcePolicy: false,
+  })
+);
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 

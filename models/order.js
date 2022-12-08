@@ -9,6 +9,7 @@ const orderSchema = mongoose.Schema({
     address:        { type: String, required: false },
     zipcode:        { type: String, required: false },
     city:           { type: String, required: false },
+    message:        { type: String, required: false },
     products:       { type: Array,  required: true },
     totalQuantity:  { type: Number, required: true },
     totalPrice:     { type: Number, required: true },

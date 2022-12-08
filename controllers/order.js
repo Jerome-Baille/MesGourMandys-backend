@@ -7,7 +7,7 @@ exports.createOrder = (req, res, next) => {
     ...req.body
   });
   order.save()
-    .then(() => res.status(201).json({ message: 'Commande enregistrée!', order: order._id }))
+    .then(() => res.status(201).json({ message: 'Commande enregistrée!', order: order }))
     .catch(error => res.status(400).json({ error }));
 
   // var products = "";
